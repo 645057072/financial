@@ -1,0 +1,36 @@
+group 'com.hlx'
+version '1.0-SNAPSHOT'
+apply from:"$rootDir/dependenices.gradle"
+
+
+subprojects{
+    //可以打成jar包或者war包
+    apply plugin:'java'
+    apply plugin:'war'
+
+    sourceCompatibility=1.8
+    targetCompatibility=1.8
+//解决构建失败的冲突
+    configurations.all{
+        resolutionStrategy{
+            failOnVersionConflict()
+                force 'org.aspectj:aspectjweaver:1.8.10'
+                force 'org.slf4j:slf4j-api:1.7.22'
+                force 'org.hamcrest:hamcrest-core:1.3'
+        }
+    }
+
+    repositories {
+        //jar包下载地址
+        mavenCentral()
+        maven { url "http://repo.spring.io/release" }
+
+    }
+
+    dependencies {
+        compile libs.common
+        testCompile libs.test
+    }
+    [compileJava,compileTestJava]*.options*.encoding='utf-8'
+}
+
