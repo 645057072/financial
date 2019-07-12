@@ -3,6 +3,7 @@ package com.hlx.manager.controller;
 
 import com.hlx.entity.Product;
 import com.hlx.manager.service.ProductService;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 
 @RestController
@@ -26,7 +27,7 @@ public class ProductController {
 
     @Autowired
     private ProductService productService;
-
+    @ApiOperation(value = "创建产品",notes = "根据相应的业务规则添加产品信息")
     @RequestMapping(value = "/add_product",method = RequestMethod.POST)
     public Product addProduct(@RequestBody Product product){
         logger.info("创建产品，参数={}",product.toString());
@@ -36,9 +37,9 @@ public class ProductController {
     }
 
     @RequestMapping(value = "/{id}",method = RequestMethod.GET)
-    public Product findOne(@PathVariable String id){
+    public Optional<Product> findOne(@PathVariable String id){
         logger.info("查询单个产品，参数={}",id);
-        Product product=productService.findOne(id);
+        Optional<Product> product=productService.findOne(id);
         logger.info("查询单个产品结果，结果={}",product);
         return product;
     }

@@ -21,9 +21,9 @@ public class RestUitl {
      * 发送POST请求
      */
 
-    public static <T> T postJSON(RestTemplate restTemplate,String Url,Object param,Class<T> responseType){
+    public static <T>T postJSON(RestTemplate restTemplate,String Url,Object param,Class<T> responseType){
         HttpEntity<String> formEntity=makePostJSONEntity(param);
-        T result=restTemplate.postForObject(Url, formEntity,responseType);
+        T result=restTemplate.postForObject(Url,formEntity,responseType);
         LOGGER.info("请求响应信息",JsonUtil.objectTojson(result));
         return result;
     }

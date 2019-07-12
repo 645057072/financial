@@ -11,26 +11,23 @@ subprojects{
     sourceCompatibility=1.8
     targetCompatibility=1.8
 //解决构建失败的冲突
-    configurations.all{
-        resolutionStrategy{
-            failOnVersionConflict()
-                force 'org.aspectj:aspectjweaver:1.8.10'
-                force 'org.slf4j:slf4j-api:1.7.22'
-                force 'org.hamcrest:hamcrest-core:1.3'
-        }
-    }
-
+//    configurations.all{
+//        resolutionStrategy{
+//            failOnVersionConflict()
+//        }
+//    }
     repositories {
         //jar包下载地址
         mavenCentral()
+        jcenter()
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+        maven { url "https://repo.spring.io/milestone" }
         maven { url "http://repo.spring.io/release" }
-
+        maven { url "https://repo.spring.io/libs-release/" }
     }
-
-    dependencies {
+  dependencies {
         compile libs.common
         testCompile libs.test
     }
     [compileJava,compileTestJava]*.options*.encoding='utf-8'
 }
-

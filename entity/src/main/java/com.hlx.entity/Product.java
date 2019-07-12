@@ -1,5 +1,7 @@
 package com.hlx.entity;
 
+import io.swagger.annotations.ApiModelProperty;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.io.Serializable;
@@ -11,6 +13,7 @@ public class Product implements Serializable {
     }
     @Id
     private String id;
+    @ApiModelProperty(value = "产品名称",allowableValues = "输入字符串形式的产品信息")
     private String name;
     private BigDecimal thresholdAmount;
     //起投金额
@@ -24,6 +27,7 @@ public class Product implements Serializable {
 * @see com.hlx.entity\enums\ProductStatus.java
 *
 * */
+    @ApiModelProperty(value = "状态",dataType = "com.hlx.entity.enums.ProductStatus")
     private String status;
     private String memo;
     private Date createAt;

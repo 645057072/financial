@@ -13,12 +13,12 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
-import javax.persistence.Id;
 import javax.persistence.criteria.*;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -74,10 +74,10 @@ public class ProductService {
 * 查询单个产品信息
 *
 * */
-    public Product findOne(String id){
+    public Optional<Product> findOne(String id){
         Assert.notNull(id,"需要输入产品参数");
         LOGGER.debug("查询产品，id={}",id);
-        Product product=productRepository.findOne(id);
+        Optional<Product> product=productRepository.findById(id);
         LOGGER.debug("查询单个产品，结果={}",product);
         return product;
 

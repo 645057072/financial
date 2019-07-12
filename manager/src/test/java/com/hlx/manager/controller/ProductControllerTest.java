@@ -7,6 +7,8 @@ import org.apache.tomcat.jni.Local;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,11 +22,13 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 public class ProductControllerTest {
+    private static Logger logger= LoggerFactory.getLogger(ProductControllerTest.class);
 
     private static RestTemplate rest=new RestTemplate();
 
-    @Value("http//localhost:8081")
+    @Value("http//localhost:8081/manager/products/add_product")
     private String baseUrl;
 
     private static List<Product> noramls=new ArrayList<>();
@@ -44,7 +48,8 @@ public class ProductControllerTest {
     @Test
     public void create(){
         noramls.forEach(product ->{
-            Product result=RestUitl.postJSON(rest,baseUrl+"products/add_product",product,Product.class);
+            logger.debug("请求参数,url={}",baseUrl);
+            Product result=RestUitl.postJSON(rest,baseUrl,product,Product.class);
             Assert.notNull(result.getCreateAt(),"插入失败");
         } );
         

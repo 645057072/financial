@@ -8,6 +8,5 @@ spring:
   jpa:
     show-sql: true
 server:
-  servlet:
-      context-path: /manager
   port: 8081
+  servlet-path: /manager
