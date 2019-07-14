@@ -7,6 +7,9 @@ import org.springframework.data.domain.Page;
 
 import java.util.Optional;
 
+/**
+ * 查询产品RPC
+ */
 @JsonRpcService("/products")
 public interface ProductRpc {
     /**
@@ -17,6 +20,11 @@ public interface ProductRpc {
      */
     Page<Product> query(ProductRpcReq productRpcReq);
 
+    /**
+     * 查询单个产品
+     * @param id
+     * @return
+     */
 
     Optional<Product> findOne(String id);
 
