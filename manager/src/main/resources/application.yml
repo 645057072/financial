@@ -9,4 +9,8 @@ spring:
     show-sql: true
 server:
   port: 8081
-  servlet-path: /manager
+  servlet:
+    context-path: /manager
+swagger:
+  groupName: manager
+  basePackage: com.hlx.manager.controller
