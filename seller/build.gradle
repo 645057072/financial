@@ -1,0 +1,5 @@
+dependencies{
+    compile project (":api")
+//    compile project (":manager")
+    compile libs.jsonrpc4j
+}

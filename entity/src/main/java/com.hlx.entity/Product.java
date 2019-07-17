@@ -1,5 +1,6 @@
 package com.hlx.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
@@ -30,8 +31,10 @@ public class Product implements Serializable {
     @ApiModelProperty(value = "状态",dataType = "com.hlx.entity.enums.ProductStatus")
     private String status;
     private String memo;
+    @JsonFormat( pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date createAt;
     private String createUser;
+    @JsonFormat( pattern="yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date updateAt;
     private String updateUser;
 

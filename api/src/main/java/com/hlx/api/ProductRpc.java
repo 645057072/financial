@@ -5,12 +5,13 @@ import com.hlx.domain.ProductRpcReq;
 import com.hlx.entity.Product;
 import org.springframework.data.domain.Page;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
  * 查询产品RPC
  */
-@JsonRpcService("/products")
+@JsonRpcService("rpc/products")
 public interface ProductRpc {
     /**
      *
@@ -18,7 +19,7 @@ public interface ProductRpc {
      * @param productRpcReq
      * @return
      */
-    Page<Product> query(ProductRpcReq productRpcReq);
+    List<Product> query(ProductRpcReq productRpcReq);
 
     /**
      * 查询单个产品
