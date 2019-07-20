@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductRpcService {
@@ -37,8 +38,15 @@ public class ProductRpcService {
        return result;
     }
 
+    public Optional<Product> findOne(String id){
+       logger.info("查询单个产品，请求:{}",id);
+       Optional<Product> result=productRpc.findOne(id);
+       logger.info("查询单个产品信息,结果:{}",result);
+       return result;
+    }
+
     @PostConstruct
-    public void testFindAll(){
-       findAll();
+    public void init(){
+       findOne("0001");
     }
 }

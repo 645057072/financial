@@ -3,9 +3,10 @@ server:
   servlet:
     context-path: /seller
 rpc:
-  manager:
+  client:
     url: http://localhost:8081/manager/
 
 
-
-
+logging:
+  level:
+    com.googlecode.jsonrpc4j: debug

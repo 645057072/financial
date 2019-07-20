@@ -1,4 +1,4 @@
 dependencies{
     compile project (":entity")
-    compile libs.jsonrpc4j
+    compile project (":util")
 }

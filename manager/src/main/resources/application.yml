@@ -14,3 +14,7 @@ server:
 swagger:
   groupName: manager
   basePackage: com.hlx.manager.controller
+
+logging:
+  level:
+    com.googlecode.jsonrpc4j: debug
